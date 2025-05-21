@@ -1,0 +1,5 @@
+# robots.txt pour Dimbiniaina Jean Lucas – Portfolio
+User-agent: *
+Allow: /
+
+Sitemap: https://jnlucas11.github.io/Dimbiniainajeanlucas/sitemap.xml
