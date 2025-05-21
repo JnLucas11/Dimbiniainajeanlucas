@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - DIMBINIAINA Jean Lucas</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#0a2463", secondary: "#3e92cc" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+
+      body {
+          font-family: 'Poppins', sans-serif;
+          scroll-behavior: smooth;
+      }
+
+      .animate-fade-in {
+          opacity: 0;
+          transform: translateY(20px);
+          animation: fadeIn 0.8s ease forwards;
+      }
+
+      .animate-slide-in-left {
+          opacity: 0;
+          transform: translateX(-50px);
+          animation: slideInLeft 0.8s ease forwards;
+      }
+
+      .animate-slide-in-right {
+          opacity: 0;
+          transform: translateX(50px);
+          animation: slideInRight 0.8s ease forwards;
+      }
+
+      .animate-scale-in {
+          opacity: 0;
+          transform: scale(0.8);
+          animation: scaleIn 0.8s ease forwards;
+      }
+
+      .animate-bounce-in {
+          opacity: 0;
+          transform: scale(0.3);
+          animation: bounceIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+
+      .animate-rotate-in {
+          opacity: 0;
+          transform: rotate(-15deg) scale(0.8);
+          animation: rotateIn 0.8s ease forwards;
+      }
+
+      @keyframes fadeIn {
+          to {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+
+      @keyframes slideInLeft {
+          to {
+              opacity: 1;
+              transform: translateX(0);
+          }
+      }
+
+      @keyframes slideInRight {
+          to {
+              opacity: 1;
+              transform: translateX(0);
+          }
+      }
+
+      @keyframes scaleIn {
+          to {
+              opacity: 1;
+              transform: scale(1);
+          }
+      }
+
+      @keyframes bounceIn {
+          0% {
+              opacity: 0;
+              transform: scale(0.3);
+          }
+          50% {
+              opacity: 1;
+              transform: scale(1.05);
+          }
+          70% {
+              transform: scale(0.9);
+          }
+          100% {
+              transform: scale(1);
+              opacity: 1;
+          }
+      }
+
+      @keyframes rotateIn {
+          to {
+              opacity: 1;
+              transform: rotate(0) scale(1);
+          }
+      }
+
+      .progress-bar {
+          position: relative;
+          height: 8px;
+          border-radius: 4px;
+          background: #e2e8f0;
+          overflow: hidden;
+      }
+
+      .progress-bar::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 0;
+          background: #3e92cc;
+          border-radius: 4px;
+          transition: width 1.5s ease;
+      }
+
+      .progress-bar.animate::after {
+          width: var(--progress);
+      }
+
+      .timeline-item {
+          position: relative;
+          padding-left: 30px;
+          margin-bottom: 30px;
+      }
+
+      .timeline-item::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 2px;
+          height: 100%;
+          background: #3e92cc;
+      }
+
+      .timeline-item::after {
+          content: '';
+          position: absolute;
+          left: -6px;
+          top: 0;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: #0a2463;
+          border: 2px solid #3e92cc;
+      }
+
+      .hexagon {
+          position: relative;
+          width: 100px;
+          height: 57.74px;
+          background-color: #3e92cc;
+          margin: 28.87px 0;
+      }
+
+      .hexagon:before,
+      .hexagon:after {
+          content: "";
+          position: absolute;
+          width: 0;
+          border-left: 50px solid transparent;
+          border-right: 50px solid transparent;
+      }
+
+      .hexagon:before {
+          bottom: 100%;
+          border-bottom: 28.87px solid #3e92cc;
+      }
+
+      .hexagon:after {
+          top: 100%;
+          width: 0;
+          border-top: 28.87px solid #3e92cc;
+      }
+
+      .skill-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 25px -5px rgba(14, 36, 99, 0.2);
+      }
+
+      .skill-card {
+          transition: all 0.3s ease;
+      }
+
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+      }
+
+      .hero-bg {
+          background-image: linear-gradient(to right, rgba(10, 36, 99, 0.9), rgba(62, 146, 204, 0.7)), url('lucasdimbiniaina.jpeg');
+          background-size: cover;
+          background-position: center;
+      }
+
+      .profile-img {
+          border: 4px solid white;
+          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-link {
+          position: relative;
+      }
+
+      .nav-link::after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 2px;
+          bottom: -2px;
+          left: 0;
+          background-color: #3e92cc;
+          transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+          width: 100%;
+      }
+
+      .social-icon {
+          transition: all 0.3s ease;
+      }
+
+      .social-icon:hover {
+          transform: translateY(-3px);
+      }
+
+      .contact-pulse {
+          animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+          0% {
+              box-shadow: 0 0 0 0 rgba(62, 146, 204, 0.7);
+          }
+          70% {
+              box-shadow: 0 0 0 10px rgba(62, 146, 204, 0);
+          }
+          100% {
+              box-shadow: 0 0 0 0 rgba(62, 146, 204, 0);
+          }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header/Hero Section -->
+    <header class="hero-bg min-h-[600px] flex items-center">
+      <div class="container mx-auto px-6 py-20">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+          <div
+            class="w-full md:w-1/3 flex justify-center md:justify-start animate-fade-in"
+            style="animation-delay: 0.2s;"
+          >
+            <div class="relative">
+              <img
+                src="Dimbiniainalucas.jpeg"
+                alt="DIMBINIAINA Jean Lucas"
+                class="w-64 h-64 object-cover rounded-full profile-img animate-bounce-in"
+                style="animation-delay: 0.5s;"
+              />
+            </div>
+          </div>
+          <div class="w-full md:w-2/3 text-white text-center md:text-left">
+            <h1
+              class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in"
+              style="animation-delay: 0.3s;"
+            >
+              DIMBINIAINA Jean Lucas
+            </h1>
+            <h2
+              class="text-2xl md:text-3xl font-light mb-8 animate-fade-in"
+              style="animation-delay: 0.4s;"
+            >
+              Responsable Communication et Marketing
+            </h2>
+            <p
+              class="text-lg mb-8 max-w-2xl animate-fade-in"
+              style="animation-delay: 0.5s;"
+            >
+              Professionnel passionné par la communication organisationnelle et
+              le marketing digital, avec une expertise en stratégies numériques
+              et intelligence artificielle.
+            </p>
+            <div
+              class="flex flex-wrap gap-4 justify-center md:justify-start animate-fade-in"
+              style="animation-delay: 0.6s;"
+            >
+              <a
+                href="#contact"
+                class="bg-white text-primary px-6 py-3 rounded-button font-medium hover:bg-opacity-90 transition-all whitespace-nowrap"
+                >Me contacter</a
+              >
+              <a
+                href="#competences"
+                class="border-2 border-white text-white px-6 py-3 rounded-button font-medium hover:bg-white hover:bg-opacity-10 transition-all whitespace-nowrap"
+                >Voir mes compétences</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+      <div class="container mx-auto px-6">
+        <div class="flex justify-between items-center py-4">
+          <a href="#" class="text-2xl font-['Pacifico'] text-primary"
+            >Portfolio</a
+          >
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="#apropos"
+              class="nav-link text-gray-700 hover:text-primary transition-colors"
+              >À propos</a
+            >
+            <a
+              href="#competences"
+              class="nav-link text-gray-700 hover:text-primary transition-colors"
+              >Compétences</a
+            >
+            <a
+              href="#formation"
+              class="nav-link text-gray-700 hover:text-primary transition-colors"
+              >Formation</a
+            >
+            <a
+              href="#experience"
+              class="nav-link text-gray-700 hover:text-primary transition-colors"
+              >Expérience</a
+            >
+            <a
+              href="#contact"
+              class="nav-link text-gray-700 hover:text-primary transition-colors"
+              >Contact</a
+            >
+          </div>
+          <button
+            class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700"
+          >
+            <i class="ri-menu-line ri-lg"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="apropos" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl font-bold text-center mb-16 text-gray-800 relative animate-fade-in"
+        >
+          À propos de moi
+          <span class="block w-20 h-1 bg-primary mx-auto mt-4"></span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Contact Info -->
+          <div
+            class="bg-white rounded-lg shadow-lg p-8 transform transition-all hover:-translate-y-2 animate-slide-in-left"
+            style="animation-delay: 0.2s;"
+          >
+            <h3
+              class="text-xl font-semibold mb-6 text-primary flex items-center"
+            >
+              <div
+                class="w-8 h-8 flex items-center justify-center mr-3 bg-primary bg-opacity-10 rounded-full"
+              >
+                <i class="ri-user-line text-primary"></i>
+              </div>
+              Informations personnelles
+            </h3>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <div
+                  class="w-8 h-8 flex items-center justify-center mr-3 text-primary"
+                >
+                  <i class="ri-map-pin-line"></i>
+                </div>
+                <div>
+                  <p class="font-medium">Adresse</p>
+                  <p class="text-gray-600">
+                    Ambodirano Fianarantsoa, Madagascar
+                  </p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-8 h-8 flex items-center justify-center mr-3 text-primary"
+                >
+                  <i class="ri-phone-line"></i>
+                </div>
+                <div>
+                  <p class="font-medium">Téléphone</p>
+                  <p class="text-gray-600">0343619447</p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-8 h-8 flex items-center justify-center mr-3 text-primary"
+                >
+                  <i class="ri-mail-line"></i>
+                </div>
+                <div>
+                  <p class="font-medium">Email</p>
+                  <p class="text-gray-600">dimbiniaina.lucas@outlook.be</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Languages -->
+          <div
+            class="bg-white rounded-lg shadow-lg p-8 transform transition-all hover:-translate-y-2 animate-fade-in"
+            style="animation-delay: 0.3s;"
+          >
+            <h3
+              class="text-xl font-semibold mb-6 text-primary flex items-center"
+            >
+              <div
+                class="w-8 h-8 flex items-center justify-center mr-3 bg-primary bg-opacity-10 rounded-full"
+              >
+                <i class="ri-translate-2-line text-primary"></i>
+              </div>
+              Langues
+            </h3>
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">Français</span>
+                  <span>Courant</span>
+                </div>
+                <div
+                  class="progress-bar"
+                  data-progress="95"
+                  style="--progress: 95%"
+                ></div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">Anglais</span>
+                  <span>Professionnel</span>
+                </div>
+                <div
+                  class="progress-bar"
+                  data-progress="80"
+                  style="--progress: 80%"
+                ></div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">Malgache</span>
+                  <span>Langue maternelle</span>
+                </div>
+                <div
+                  class="progress-bar"
+                  data-progress="100"
+                  style="--progress: 100%"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Qualities -->
+          <div
+            class="bg-white rounded-lg shadow-lg p-8 transform transition-all hover:-translate-y-2 animate-slide-in-right"
+            style="animation-delay: 0.4s;"
+          >
+            <h3
+              class="text-xl font-semibold mb-6 text-primary flex items-center"
+            >
+              <div
+                class="w-8 h-8 flex items-center justify-center mr-3 bg-primary bg-opacity-10 rounded-full"
+              >
+                <i class="ri-star-line text-primary"></i>
+              </div>
+              Qualités personnelles
+            </h3>
+            <ul class="grid grid-cols-2 gap-4">
+              <li class="flex items-center">
+                <div
+                  class="w-8 h-8 flex items-center justify-center mr-2 text-secondary"
+                >
+                  <i class="ri-team-line"></i>
+                </div>
+                <span>Travail d'équipe</span>
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-8 h-8 flex items-center justify-center mr-2 text-secondary"
+                >
+                  <i class="ri-ear-line"></i>
+                </div>
+                <span>Capacité d'écoute</span>
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-8 h-8 flex items-center justify-center mr-2 text-secondary"
+                >
+                  <i class="ri-time-line"></i>
+                </div>
+                <span>Gestion du temps</span>
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-8 h-8 flex items-center justify-center mr-2 text-secondary"
+                >
+                  <i class="ri-user-smile-line"></i>
+                </div>
+                <span>Sociable</span>
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-8 h-8 flex items-center justify-center mr-2 text-secondary"
+                >
+                  <i class="ri-file-list-3-line"></i>
+                </div>
+                <span>Méthodique</span>
+              </li>
+              <li class="flex items-center">
+                <div
+                  class="w-8 h-8 flex items-center justify-center mr-2 text-secondary"
+                >
+                  <i class="ri-refresh-line"></i>
+                </div>
+                <span>Adaptabilité</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="competences" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl font-bold text-center mb-16 text-gray-800 relative animate-fade-in"
+        >
+          Mes compétences
+          <span class="block w-20 h-1 bg-primary mx-auto mt-4"></span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Communication Card -->
+          <div
+            class="bg-white rounded-lg shadow-lg p-8 skill-card animate-fade-in"
+            style="animation-delay: 0.2s;"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mb-6 mx-auto"
+            >
+              <i class="ri-chat-4-line text-primary ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4 text-center">
+              Communication organisationnelle
+            </h3>
+            <p class="text-gray-600 text-center mb-6">
+              Expertise en stratégies de communication interne et externe,
+              gestion de la réputation et relations publiques.
+            </p>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1 text-sm">
+                  <span>Stratégie de communication</span>
+                  <span>90%</span>
+                </div>
+                <div
+                  class="progress-bar"
+                  data-progress="90"
+                  style="--progress: 90%"
+                ></div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1 text-sm">
+                  <span>Relations publiques</span>
+                  <span>85%</span>
+                </div>
+                <div
+                  class="progress-bar"
+                  data-progress="85"
+                  style="--progress: 85%"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Marketing Card -->
+          <div
+            class="bg-white rounded-lg shadow-lg p-8 skill-card animate-fade-in"
+            style="animation-delay: 0.3s;"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mb-6 mx-auto"
+            >
+              <i class="ri-line-chart-line text-primary ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4 text-center">
+              Marketing digital
+            </h3>
+            <p class="text-gray-600 text-center mb-6">
+              Maîtrise des stratégies de marketing en ligne, SEO, réseaux
+              sociaux et analyse de données.
+            </p>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1 text-sm">
+                  <span>Stratégie digitale</span>
+                  <span>95%</span>
+                </div>
+                <div
+                  class="progress-bar"
+                  data-progress="95"
+                  style="--progress: 95%"
+                ></div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1 text-sm">
+                  <span>SEO/SEM</span>
+                  <span>85%</span>
+                </div>
+                <div
+                  class="progress-bar"
+                  data-progress="85"
+                  style="--progress: 85%"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Digital Strategy Card -->
+          <div
+            class="bg-white rounded-lg shadow-lg p-8 skill-card animate-fade-in"
+            style="animation-delay: 0.4s;"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mb-6 mx-auto"
+            >
+              <i class="ri-global-line text-primary ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4 text-center">
+              Stratégie numérique
+            </h3>
+            <p class="text-gray-600 text-center mb-6">
+              Développement et mise en œuvre de stratégies numériques innovantes
+              pour atteindre les objectifs commerciaux.
+            </p>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1 text-sm">
+                  <span>Planification stratégique</span>
+                  <span>90%</span>
+                </div>
+                <div
+                  class="progress-bar"
+                  data-progress="90"
+                  style="--progress: 90%"
+                ></div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1 text-sm">
+                  <span>Analyse des tendances</span>
+                  <span>80%</span>
+                </div>
+                <div
+                  class="progress-bar"
+                  data-progress="80"
+                  style="--progress: 80%"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- IT Management Card -->
+          <div
+            class="bg-white rounded-lg shadow-lg p-8 skill-card animate-fade-in"
+            style="animation-delay: 0.5s;"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mb-6 mx-auto"
+            >
+              <i class="ri-computer-line text-primary ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4 text-center">
+              Informatique de gestion
+            </h3>
+            <p class="text-gray-600 text-center mb-6">
+              Compétences en systèmes d'information, gestion de bases de données
+              et outils informatiques de gestion.
+            </p>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1 text-sm">
+                  <span>Systèmes d'information</span>
+                  <span>85%</span>
+                </div>
+                <div
+                  class="progress-bar"
+                  data-progress="85"
+                  style="--progress: 85%"
+                ></div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1 text-sm">
+                  <span>Gestion de données</span>
+                  <span>80%</span>
+                </div>
+                <div
+                  class="progress-bar"
+                  data-progress="80"
+                  style="--progress: 80%"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Card -->
+          <div
+            class="bg-white rounded-lg shadow-lg p-8 skill-card animate-fade-in"
+            style="animation-delay: 0.6s;"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mb-6 mx-auto"
+            >
+              <i class="ri-robot-line text-primary ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4 text-center">
+              Intelligence Artificielle
+            </h3>
+            <p class="text-gray-600 text-center mb-6">
+              Application de l'IA dans les stratégies marketing et
+              communication, automatisation et analyse prédictive.
+            </p>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1 text-sm">
+                  <span>IA pour le marketing</span>
+                  <span>85%</span>
+                </div>
+                <div
+                  class="progress-bar"
+                  data-progress="85"
+                  style="--progress: 85%"
+                ></div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1 text-sm">
+                  <span>Automatisation</span>
+                  <span>80%</span>
+                </div>
+                <div
+                  class="progress-bar"
+                  data-progress="80"
+                  style="--progress: 80%"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Commercial Card -->
+          <div
+            class="bg-white rounded-lg shadow-lg p-8 skill-card animate-fade-in"
+            style="animation-delay: 0.7s;"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mb-6 mx-auto"
+            >
+              <i class="ri-store-2-line text-primary ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4 text-center">
+              Commercialisation
+            </h3>
+            <p class="text-gray-600 text-center mb-6">
+              Développement de stratégies commerciales, gestion des ventes et
+              relation client.
+            </p>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1 text-sm">
+                  <span>Stratégie commerciale</span>
+                  <span>90%</span>
+                </div>
+                <div
+                  class="progress-bar"
+                  data-progress="90"
+                  style="--progress: 90%"
+                ></div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1 text-sm">
+                  <span>Relation client</span>
+                  <span>95%</span>
+                </div>
+                <div
+                  class="progress-bar"
+                  data-progress="95"
+                  style="--progress: 95%"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Technical Skills Section -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl font-bold text-center mb-16 text-gray-800 relative animate-fade-in"
+        >
+          Compétences techniques
+          <span class="block w-20 h-1 bg-primary mx-auto mt-4"></span>
+        </h2>
+
+        <div
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8"
+        >
+          <!-- MS Office -->
+          <div
+            class="flex flex-col items-center animate-scale-in"
+            style="animation-delay: 0.2s;"
+          >
+            <div
+              class="w-20 h-20 flex items-center justify-center rounded-full bg-blue-100 mb-4 transform transition-all hover:rotate-12"
+            >
+              <i class="ri-file-word-2-line text-blue-600 ri-2x"></i>
+            </div>
+            <h4 class="font-medium text-center">MS Office</h4>
+            <div class="flex mt-2">
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+            </div>
+          </div>
+
+          <!-- HTML -->
+          <div
+            class="flex flex-col items-center animate-scale-in"
+            style="animation-delay: 0.3s;"
+          >
+            <div
+              class="w-20 h-20 flex items-center justify-center rounded-full bg-orange-100 mb-4 transform transition-all hover:rotate-12"
+            >
+              <i class="ri-html5-line text-orange-600 ri-2x"></i>
+            </div>
+            <h4 class="font-medium text-center">HTML</h4>
+            <div class="flex mt-2">
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-line text-yellow-500"></i>
+            </div>
+          </div>
+
+          <!-- CSS -->
+          <div
+            class="flex flex-col items-center animate-scale-in"
+            style="animation-delay: 0.4s;"
+          >
+            <div
+              class="w-20 h-20 flex items-center justify-center rounded-full bg-blue-100 mb-4 transform transition-all hover:rotate-12"
+            >
+              <i class="ri-css3-line text-blue-600 ri-2x"></i>
+            </div>
+            <h4 class="font-medium text-center">CSS</h4>
+            <div class="flex mt-2">
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-line text-yellow-500"></i>
+            </div>
+          </div>
+
+          <!-- Photoshop -->
+          <div
+            class="flex flex-col items-center animate-scale-in"
+            style="animation-delay: 0.5s;"
+          >
+            <div
+              class="w-20 h-20 flex items-center justify-center rounded-full bg-blue-100 mb-4 transform transition-all hover:rotate-12"
+            >
+              <i class="ri-photoshop-line text-blue-800 ri-2x"></i>
+            </div>
+            <h4 class="font-medium text-center">Photoshop</h4>
+            <div class="flex mt-2">
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-line text-yellow-500"></i>
+            </div>
+          </div>
+
+          <!-- Illustrator -->
+          <div
+            class="flex flex-col items-center animate-scale-in"
+            style="animation-delay: 0.6s;"
+          >
+            <div
+              class="w-20 h-20 flex items-center justify-center rounded-full bg-orange-100 mb-4 transform transition-all hover:rotate-12"
+            >
+              <i class="ri-artboard-2-line text-orange-600 ri-2x"></i>
+            </div>
+            <h4 class="font-medium text-center">Illustrator</h4>
+            <div class="flex mt-2">
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-line text-yellow-500"></i>
+            </div>
+          </div>
+
+          <!-- XD -->
+          <div
+            class="flex flex-col items-center animate-scale-in"
+            style="animation-delay: 0.7s;"
+          >
+            <div
+              class="w-20 h-20 flex items-center justify-center rounded-full bg-pink-100 mb-4 transform transition-all hover:rotate-12"
+            >
+              <i class="ri-layout-line text-pink-600 ri-2x"></i>
+            </div>
+            <h4 class="font-medium text-center">Adobe XD</h4>
+            <div class="flex mt-2">
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-line text-yellow-500"></i>
+            </div>
+          </div>
+
+          <!-- Figma -->
+          <div
+            class="flex flex-col items-center animate-scale-in"
+            style="animation-delay: 0.8s;"
+          >
+            <div
+              class="w-20 h-20 flex items-center justify-center rounded-full bg-purple-100 mb-4 transform transition-all hover:rotate-12"
+            >
+              <i class="ri-figma-line text-purple-600 ri-2x"></i>
+            </div>
+            <h4 class="font-medium text-center">Figma</h4>
+            <div class="flex mt-2">
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-line text-yellow-500"></i>
+            </div>
+          </div>
+
+          <!-- WordPress -->
+          <div
+            class="flex flex-col items-center animate-scale-in"
+            style="animation-delay: 0.9s;"
+          >
+            <div
+              class="w-20 h-20 flex items-center justify-center rounded-full bg-blue-100 mb-4 transform transition-all hover:rotate-12"
+            >
+              <i class="ri-wordpress-line text-blue-700 ri-2x"></i>
+            </div>
+            <h4 class="font-medium text-center">WordPress</h4>
+            <div class="flex mt-2">
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-line text-yellow-500"></i>
+            </div>
+          </div>
+
+          <!-- KoboToolbox -->
+          <div
+            class="flex flex-col items-center animate-scale-in"
+            style="animation-delay: 1s;"
+          >
+            <div
+              class="w-20 h-20 flex items-center justify-center rounded-full bg-green-100 mb-4 transform transition-all hover:rotate-12"
+            >
+              <i class="ri-survey-line text-green-600 ri-2x"></i>
+            </div>
+            <h4 class="font-medium text-center">KoboToolbox</h4>
+            <div class="flex mt-2">
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-fill text-yellow-500"></i>
+              <i class="ri-star-line text-yellow-500"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="formation" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl font-bold text-center mb-16 text-gray-800 relative animate-fade-in"
+        >
+          Formation et diplômes
+          <span class="block w-20 h-1 bg-primary mx-auto mt-4"></span>
+        </h2>
+
+        <div class="max-w-3xl mx-auto">
+          <!-- Education Timeline -->
+          <div class="space-y-12">
+            <!-- Degree -->
+            <div
+              class="timeline-item animate-slide-in-left"
+              style="animation-delay: 0.2s;"
+            >
+              <div class="bg-white p-6 rounded-lg shadow-lg">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4"
+                  >
+                    <i class="ri-graduation-cap-line text-primary ri-lg"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-semibold">
+                      Licence en Relations Publiques et Communication
+                      Organisationnelle
+                    </h3>
+                    <p class="text-gray-600">2023 - 2024</p>
+                  </div>
+                </div>
+                <p class="text-gray-700">
+                  Formation approfondie en stratégies de communication,
+                  relations publiques, gestion de crise et techniques de
+                  communication organisationnelle.
+                </p>
+              </div>
+            </div>
+
+            <!-- Baccalaureate -->
+            <div
+              class="timeline-item animate-slide-in-left"
+              style="animation-delay: 0.3s;"
+            >
+              <div class="bg-white p-6 rounded-lg shadow-lg">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4"
+                  >
+                    <i class="ri-book-open-line text-primary ri-lg"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-semibold">Baccalauréat</h3>
+                    <p class="text-gray-600">2020</p>
+                  </div>
+                </div>
+                <p class="text-gray-700">
+                  Obtention du diplôme de baccalauréat avec mention, ouvrant la
+                  voie à des études supérieures en communication.
+                </p>
+              </div>
+            </div>
+
+            <!-- Additional Training -->
+            <div
+              class="timeline-item animate-slide-in-left"
+              style="animation-delay: 0.4s;"
+            >
+              <div class="bg-white p-6 rounded-lg shadow-lg">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4"
+                  >
+                    <i class="ri-award-line text-primary ri-lg"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-semibold">
+                      Formations professionnelles
+                    </h3>
+                    <p class="text-gray-600">2021 - 2023</p>
+                  </div>
+                </div>
+                <ul class="space-y-3 text-gray-700">
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                    <span>Certification en Community Management</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                    <span>Formation en Référencement Naturel (SEO)</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                    <span>Programme de Leadership et Entrepreneuriat</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                    <span>Formation en Montage de Projet</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                    <span
+                      >Certification en Informatique Bureautique Avancée</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl font-bold text-center mb-16 text-gray-800 relative animate-fade-in"
+        >
+          Expérience professionnelle
+          <span class="block w-20 h-1 bg-primary mx-auto mt-4"></span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Experience 1 -->
+          <div
+            class="bg-white rounded-lg shadow-lg p-8 transform transition-all hover:-translate-y-2 animate-slide-in-left"
+            style="animation-delay: 0.2s;"
+          >
+            <div class="flex items-center mb-6">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4"
+              >
+                <i class="ri-bar-chart-grouped-line text-primary ri-lg"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold">
+                  Mise en place de stratégie de marketing digital
+                </h3>
+                <p class="text-gray-600">Entreprise Locale | 2023</p>
+              </div>
+            </div>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                <span
+                  >Analyse de la présence en ligne et identification des
+                  opportunités</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                <span>Développement d'une stratégie de contenu multicanal</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                <span>Mise en place de campagnes publicitaires ciblées</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                <span>Analyse des performances et optimisation continue</span>
+              </li>
+            </ul>
+            <p class="mt-4 text-gray-700">
+              Résultat : Augmentation de 45% de l'engagement sur les réseaux
+              sociaux et 30% de croissance du trafic web.
+            </p>
+          </div>
+
+          <!-- Experience 2 -->
+          <div
+            class="bg-white rounded-lg shadow-lg p-8 transform transition-all hover:-translate-y-2 animate-slide-in-right"
+            style="animation-delay: 0.3s;"
+          >
+            <div class="flex items-center mb-6">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4"
+              >
+                <i class="ri-global-line text-primary ri-lg"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold">
+                  Renforcement de la stratégie de communication digitale
+                </h3>
+                <p class="text-gray-600">ONG Internationale | 2022</p>
+              </div>
+            </div>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                <span>Audit de la communication existante</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                <span
+                  >Élaboration d'une stratégie de communication intégrée</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                <span
+                  >Création de contenu engageant pour diverses plateformes</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                <span
+                  >Formation de l'équipe aux meilleures pratiques
+                  digitales</span
+                >
+              </li>
+            </ul>
+            <p class="mt-4 text-gray-700">
+              Résultat : Amélioration de la visibilité de l'organisation et
+              augmentation de 60% du nombre de bénévoles.
+            </p>
+          </div>
+
+          <!-- Experience 3 -->
+          <div
+            class="bg-white rounded-lg shadow-lg p-8 transform transition-all hover:-translate-y-2 animate-slide-in-left"
+            style="animation-delay: 0.4s;"
+          >
+            <div class="flex items-center mb-6">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4"
+              >
+                <i class="ri-store-2-line text-primary ri-lg"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold">
+                  Gestion de campagne marketing multicanal
+                </h3>
+                <p class="text-gray-600">Commerce de détail | 2023</p>
+              </div>
+            </div>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                <span
+                  >Planification et coordination de campagnes saisonnières</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                <span>Gestion des relations avec les influenceurs locaux</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                <span>Création de contenu visuel pour les médias sociaux</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                <span>Analyse et reporting des résultats de campagne</span>
+              </li>
+            </ul>
+            <p class="mt-4 text-gray-700">
+              Résultat : Augmentation de 35% des ventes pendant la période de
+              campagne.
+            </p>
+          </div>
+
+          <!-- Experience 4 -->
+          <div
+            class="bg-white rounded-lg shadow-lg p-8 transform transition-all hover:-translate-y-2 animate-slide-in-right"
+            style="animation-delay: 0.5s;"
+          >
+            <div class="flex items-center mb-6">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4"
+              >
+                <i class="ri-customer-service-2-line text-primary ri-lg"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold">
+                  Amélioration de la communication interne
+                </h3>
+                <p class="text-gray-600">Entreprise de services | 2022</p>
+              </div>
+            </div>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                <span>Diagnostic des flux de communication existants</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                <span>Mise en place d'outils collaboratifs adaptés</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                <span>Création d'une newsletter interne mensuelle</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                <span>Organisation d'événements de team building</span>
+              </li>
+            </ul>
+            <p class="mt-4 text-gray-700">
+              Résultat : Amélioration de 40% de la satisfaction des employés et
+              réduction du turnover.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl font-bold text-center mb-16 text-gray-800 relative animate-fade-in"
+        >
+          Me contacter
+          <span class="block w-20 h-1 bg-primary mx-auto mt-4"></span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <!-- Contact Form -->
+          <div
+            class="bg-white rounded-lg shadow-lg p-8 animate-fade-in"
+            style="animation-delay: 0.2s;"
+          >
+            <h3 class="text-xl font-semibold mb-6 text-primary">
+              Envoyez-moi un message
+            </h3>
+            <form>
+              <div class="mb-6">
+                <label for="name" class="block text-gray-700 mb-2"
+                  >Nom complet</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  placeholder="Votre nom"
+                />
+              </div>
+              <div class="mb-6">
+                <label for="email" class="block text-gray-700 mb-2"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  placeholder="Votre email"
+                />
+              </div>
+              <div class="mb-6">
+                <label for="subject" class="block text-gray-700 mb-2"
+                  >Sujet</label
+                >
+                <input
+                  type="text"
+                  id="subject"
+                  class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  placeholder="Sujet de votre message"
+                />
+              </div>
+              <div class="mb-6">
+                <label for="message" class="block text-gray-700 mb-2"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  rows="5"
+                  class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  placeholder="Votre message"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-opacity-90 transition-all whitespace-nowrap w-full"
+              >
+                Envoyer le message
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="animate-fade-in" style="animation-delay: 0.3s;">
+            <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+              <h3 class="text-xl font-semibold mb-6 text-primary">
+                Coordonnées
+              </h3>
+              <ul class="space-y-6">
+                <li class="flex items-start">
+                  <div
+                    class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4"
+                  >
+                    <i class="ri-map-pin-line text-primary ri-lg"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium">Adresse</h4>
+                    <p class="text-gray-600">
+                      Ambodirano Fianarantsoa, Madagascar
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4"
+                  >
+                    <i class="ri-phone-line text-primary ri-lg"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium">Téléphone</h4>
+                    <p class="text-gray-600">0343619447</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4"
+                  >
+                    <i class="ri-mail-line text-primary ri-lg"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium">Email</h4>
+                    <p class="text-gray-600">dimbiniaina.lucas@outlook.be</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-8">
+              <h3 class="text-xl font-semibold mb-6 text-primary">
+                Disponibilité
+              </h3>
+              <ul class="space-y-4">
+                <li class="flex items-center">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center mr-3 text-primary"
+                  >
+                    <i class="ri-time-line"></i>
+                  </div>
+                  <span>Lundi - Vendredi: 8h30 - 17h30</span>
+                </li>
+                <li class="flex items-center">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center mr-3 text-primary"
+                  >
+                    <i class="ri-calendar-line"></i>
+                  </div>
+                  <span>Disponible pour des projets freelance</span>
+                </li>
+                <li class="flex items-center">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center mr-3 text-primary"
+                  >
+                    <i class="ri-global-line"></i>
+                  </div>
+                  <span>Travail à distance possible</span>
+                </li>
+              </ul>
+
+              <div class="mt-8">
+                <a
+                  href="#"
+                  class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-opacity-90 transition-all whitespace-nowrap w-full block text-center contact-pulse"
+                >
+                  Télécharger mon CV
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-8 md:mb-0">
+            <h2 class="text-2xl font-['Pacifico'] mb-4">Portfolio</h2>
+            <p class="max-w-md">
+              Spécialiste en communication et marketing digital, je vous
+              accompagne dans le développement de votre présence en ligne et
+              l'optimisation de vos stratégies de communication.
+            </p>
+          </div>
+
+          <div class="flex flex-col items-center md:items-end">
+            <h3 class="text-xl font-semibold mb-4">Suivez-moi</h3>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-all social-icon"
+              >
+                <i class="ri-linkedin-fill text-white"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-all social-icon"
+              >
+                <i class="ri-twitter-fill text-white"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-all social-icon"
+              >
+                <i class="ri-facebook-fill text-white"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-all social-icon"
+              >
+                <i class="ri-instagram-fill text-white"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-white border-opacity-20 mt-8 pt-8 text-center"
+        >
+          <p>&copy; 2025 DIMBINIAINA Jean Lucas. Tous droits réservés.</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Animate progress bars when they come into view
+        const progressBars = document.querySelectorAll(".progress-bar");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("animate");
+              }
+            });
+          },
+          { threshold: 0.2 },
+        );
+
+        progressBars.forEach((bar) => {
+          observer.observe(bar);
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Animate elements when they come into view
+        const animatedElements = document.querySelectorAll(
+          ".animate-fade-in, .animate-slide-in-left, .animate-slide-in-right, .animate-scale-in, .animate-bounce-in, .animate-rotate-in",
+        );
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const delay = entry.target.style.animationDelay || "0s";
+                setTimeout(
+                  () => {
+                    entry.target.style.visibility = "visible";
+                  },
+                  parseFloat(delay) * 1000,
+                );
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+
+        animatedElements.forEach((el) => {
+          el.style.visibility = "hidden";
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>
